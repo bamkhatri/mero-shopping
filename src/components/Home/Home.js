@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProduct } from '../../features/slices/productSlice'
+import { addToCart } from '../../features/slices/cartSlice'
 import './Home.css'
 const Home = () => {
   const image = 'https://electronic-ecommerce.herokuapp.com/fantechHeadset.jpg'
@@ -16,6 +17,10 @@ const Home = () => {
     }
     setDatas(productStore)
   }, [productStore])
+
+  const handleClick = (product) => {
+    dispatch(addToCart(product))
+  }
   return (
     <main>
       <Container className='home-container'>
@@ -27,10 +32,12 @@ const Home = () => {
                 <img src={image} alt='img' />
                 <h3>{product.name}</h3>
                 <div className='product-details'>
-                  <span className='product-price'>Price: {product.price}</span>
+                  <span className='product-price'>{product.price}</span>
                   <span>Stock: {product.stock}</span>
                 </div>
-                <button>Add to Cart</button>
+                <button onClick={() => handleClick(product)}>
+                  Add to Cart
+                </button>
               </div>
             )
           })}
