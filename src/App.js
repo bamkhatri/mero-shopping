@@ -1,5 +1,7 @@
 import React from 'react'
 import './App.css'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
@@ -10,6 +12,7 @@ function App() {
   return (
     <>
       <Router>
+        <ToastContainer />
         <Header />
         <Switch>
           <Route path='/cart'>
