@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const From = () => {
   const initialValues = {
     username: '',
-    blling: '',
+    billing: '',
     delivery: '',
     telephone: '',
     currentDate: '',
@@ -21,6 +21,13 @@ const From = () => {
     e.preventDefault()
     setFormErrors(validate(formValues))
     setIsSubmit(true)
+    setFormValues({
+      username: '',
+      billing: '',
+      delivery: '',
+      telephone: '',
+      currentDate: '',
+    })
   }
 
   useEffect(() => {
@@ -35,8 +42,8 @@ const From = () => {
     if (!values.username) {
       errors.username = 'Username is required!'
     }
-    if (!values.blling) {
-      errors.blling = 'blling address is required!'
+    if (!values.billing) {
+      errors.billing = 'billing address is required!'
     }
     if (!values.delivery) {
       errors.delivery = 'delivery address is required!'
@@ -55,9 +62,9 @@ const From = () => {
   return (
     <div className='container'>
       {Object.keys(formErrors).length === 0 && isSubmit ? (
-        <div className='ui message success'>Signed in successfully</div>
+        <div className='ui message success'>Checkout is successfully</div>
       ) : (
-        <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
+        ''
       )}
 
       <form onSubmit={handleSubmit}>
@@ -81,7 +88,7 @@ const From = () => {
               type='text'
               name='billing'
               placeholder='Billing Address'
-              value={formValues.blling}
+              value={formValues.billing}
               onChange={handleChange}
             />
           </div>
@@ -98,7 +105,7 @@ const From = () => {
           </div>
           <p>{formErrors.delivery}</p>
           <div className='field'>
-            <label>Delivery Address</label>
+            <label>Telephon Address</label>
             <input
               type='text'
               name='telephone'
@@ -109,7 +116,7 @@ const From = () => {
           </div>
           <p>{formErrors.telephone}</p>
           <div className='field'>
-            <label>Delivery Address</label>
+            <label>Current Date</label>
             <input
               type='text'
               name='currentDate'

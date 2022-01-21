@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
 import Cart from './components/Cart/Cart'
+import Form from './components/Form/From'
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         <ToastContainer />
         <Header />
         <Switch>
+          <Route path='/form'>
+            <Form />
+          </Route>
           <Route path='/cart'>
             <Cart />
           </Route>
