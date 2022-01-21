@@ -3,7 +3,9 @@ import { toast } from 'react-toastify'
 const sliceName = 'cartSlice'
 
 const initialState = {
-  cartItem: [],
+  cartItem: localStorage.getItem('cartItem')
+    ? JSON.parse(localStorage.getItem('cartItem'))
+    : [],
   totalProduct: 0,
   totalProductAmount: 0,
 }
@@ -28,6 +30,7 @@ const cartSlice = createSlice({
           position: 'bottom-right',
         })
       }
+      localStorage.setItem('cartItem', JSON.stringify(state.cartItem))
     },
   },
 })
