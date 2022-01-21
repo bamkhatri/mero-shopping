@@ -7,6 +7,8 @@ import './Cart.css'
 const Cart = () => {
   const cart = useSelector((state) => state.cartSlice)
   const dispatch = useDispatch()
+
+  //To handle remove event
   const handlRemove = (item) => {
     dispatch(removeFromCart(item))
   }
