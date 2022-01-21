@@ -1,27 +1,24 @@
 import React from 'react'
-import { Container, Navbar, Nav } from 'react-bootstrap'
+import './Header.css'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
-        <Container>
-          <Navbar.Brand>Mero Shopping</Navbar.Brand>
+      <div className='header'>
+        <Link to='/'>
+          <h2 className='heading'>Mero Shopping</h2>
+        </Link>
 
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
-          <Navbar.Collapse id='basic-navbar-nav'>
-            <Nav className='ml-auto'>
-              <Nav.Link>
-                <i className='fas fa-shopping-cart'></i> Cart
-              </Nav.Link>
-
-              <Nav.Link>
-                <i className='fas fa-user'></i> Sign In
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+        <Link to='/cart'>
+          <div className='nav-bag'>
+            <i className='fas fa-shopping-cart'></i> Cart
+            <span className='cart-quantity'>
+              <span>3</span>
+            </span>
+          </div>
+        </Link>
+      </div>
     </header>
   )
 }

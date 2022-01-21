@@ -1,18 +1,26 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
+import './App.css'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
+import Home from './components/Home/Home'
+import Cart from './components/Cart/Cart'
 
 function App() {
   return (
     <>
-      <Header />
-      <main>
-        <Container>
-          <h1>Welcome to Mero Shopping</h1>
-        </Container>
-      </main>
-      <Footer />
+      <Router>
+        <Header />
+        <Switch>
+          <Route path='/cart'>
+            <Cart />
+          </Route>
+          <Route path='/' exact>
+            <Home />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
     </>
   )
 }
