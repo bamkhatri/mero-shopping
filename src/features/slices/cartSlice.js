@@ -37,9 +37,34 @@ const cartSlice = createSlice({
         (item) => item.id !== action.payload.id
       )
       state.cartItem = nextCartItem
+      localStorage.setItem('cartItem', JSON.stringify(state.cartItem))
+      toast.error(`${action.payload.name} is removed from cart `, {
+        position: 'bottom-right',
+      })
+    },
+    decreaseCartQuantity(state, action) {
+      const itemIndex = state.cartItem.findIndex(
+        (item) => item.id === action.payload.id
+      )
+      if (state.cartItem[itemIndex].productQty > 1) {
+        state.cartItem[itemIndex].productQty -= 1
+        toast.info(`Decreased ${action.payload.name} cart quantity `, {
+          position: 'bottom-right',
+        })
+      } else if (state.cartItem[itemIndex].productQty === 1) {
+        const nextCartItem = state.cartItem.filter(
+          (item) => item.id !== action.payload.id
+        )
+        state.cartItem = nextCartItem
+        toast.error(`${action.payload.name} is removed from cart `, {
+          position: 'bottom-right',
+        })
+      }
+      localStorage.setItem('cartItem', JSON.stringify(state.cartItem))
     },
   },
 })
 
-export const { addToCart, removeFromCart } = cartSlice.actions
+export const { addToCart, removeFromCart, decreaseCartQuantity } =
+  cartSlice.actions
 export default cartSlice.reducer
