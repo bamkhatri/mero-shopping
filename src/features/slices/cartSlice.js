@@ -62,9 +62,36 @@ const cartSlice = createSlice({
       }
       localStorage.setItem('cartItem', JSON.stringify(state.cartItem))
     },
+    increasedCartQuantity(state, action) {
+      console.log(action.payload.stock)
+      const itemIndex = state.cartItem.findIndex(
+        (item) => item.id === action.payload.id
+      )
+      if (state.cartItem[itemIndex].productQty < action.payload.stock) {
+        state.cartItem[itemIndex].productQty += 1
+        toast.info(`Increased ${action.payload.name} cart quantity `, {
+          position: 'bottom-right',
+        })
+      } else if (
+        state.cartItem[itemIndex].productQty === action.payload.stock
+      ) {
+        const nextCartItem = state.cartItem.filter(
+          (item) => item.id !== action.payload.id
+        )
+        state.cartItem = nextCartItem
+        toast.error(`${action.payload.name} is out of Stock `, {
+          position: 'bottom-right',
+        })
+      }
+      localStorage.setItem('cartItem', JSON.stringify(state.cartItem))
+    },
   },
 })
 
-export const { addToCart, removeFromCart, decreaseCartQuantity } =
-  cartSlice.actions
+export const {
+  addToCart,
+  removeFromCart,
+  decreaseCartQuantity,
+  increasedCartQuantity,
+} = cartSlice.actions
 export default cartSlice.reducer
