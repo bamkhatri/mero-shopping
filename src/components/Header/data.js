@@ -36,17 +36,3 @@ export const category = [
     cName: 'submenu-items',
   },
 ]
-export const price = [
-  {
-    id: 1,
-    title: 'Lowest',
-    path: '/lowest',
-    cName: 'submenu-items',
-  },
-  {
-    id: 2,
-    title: 'Highest',
-    path: '/highest',
-    cName: 'submenu-items',
-  },
-]

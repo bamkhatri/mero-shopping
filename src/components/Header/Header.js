@@ -22,7 +22,6 @@ const Header = () => {
           <h2 className='head'>Category</h2>
           {openDropdown && <Dropdown />}
         </div>
-        <h2 className='head'>Price</h2>
         <Link to='/cart'>
           <div className='nav-bag'>
             <i className='fas fa-shopping-cart'></i> Cart
