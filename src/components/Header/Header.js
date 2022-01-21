@@ -12,7 +12,12 @@ const Header = () => {
         <Link to='/'>
           <h2 className='heading'>Mero Shopping</h2>
         </Link>
-
+        <div className='category'>
+          Category <i class='fas fa-angle-down'></i>
+        </div>
+        <div className='price'>
+          Price <i class='fas fa-angle-down'></i>
+        </div>
         <Link to='/cart'>
           <div className='nav-bag'>
             <i className='fas fa-shopping-cart'></i> Cart
