@@ -1,8 +1,11 @@
 import React from 'react'
 import './Header.css'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
+  const { totalProduct } = useSelector((state) => state.cartSlice)
+
   return (
     <header>
       <div className='header'>
@@ -14,7 +17,7 @@ const Header = () => {
           <div className='nav-bag'>
             <i className='fas fa-shopping-cart'></i> Cart
             <span className='cart-quantity'>
-              <span>3</span>
+              <span>{totalProduct}</span>
             </span>
           </div>
         </Link>
