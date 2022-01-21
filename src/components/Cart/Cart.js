@@ -6,6 +6,7 @@ import {
   removeFromCart,
   decreaseCartQuantity,
   increasedCartQuantity,
+  clearCart,
 } from '../../features/slices/cartSlice'
 import './Cart.css'
 const Cart = () => {
@@ -25,6 +26,10 @@ const Cart = () => {
   //To handle increased quantity event
   const handleIncreasedQuantity = (item) => {
     dispatch(increasedCartQuantity(item))
+  }
+  //Handle clear cart method
+  const handleClearCart = () => {
+    dispatch(clearCart())
   }
 
   return (
@@ -99,7 +104,9 @@ const Cart = () => {
             })}
           </div>
           <div className='cart-summary'>
-            <button className='clear-btn'>Clear Cart</button>
+            <button className='clear-btn' onClick={() => handleClearCart()}>
+              Clear Cart
+            </button>
             <div className='cart-checkout'>
               <div className='subtotal'>
                 <span>Subtotal</span>
