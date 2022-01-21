@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router'
 import { Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProduct } from '../../features/slices/productSlice'
@@ -8,6 +9,7 @@ const Home = () => {
   const image = 'https://electronic-ecommerce.herokuapp.com/fantechHeadset.jpg'
   const [datas, setDatas] = useState([])
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const productStore = useSelector((state) => state.product.data)
 
@@ -20,6 +22,7 @@ const Home = () => {
 
   const handleClick = (product) => {
     dispatch(addToCart(product))
+    history.push('/cart')
   }
   return (
     <main>
