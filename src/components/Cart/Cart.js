@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import cartSlice from '../../features/slices/cartSlice'
+
 import {
   removeFromCart,
   decreaseCartQuantity,
