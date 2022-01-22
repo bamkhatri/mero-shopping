@@ -99,6 +99,7 @@ const Cart = () => {
                   </div>
 
                   <div className='cart-product-total-price'>
+                    $
                     {JSON.stringify(item.price)
                       .replace('"', ' ')
                       .replace('$', '')
