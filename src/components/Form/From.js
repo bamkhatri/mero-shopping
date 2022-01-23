@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 const From = () => {
   const initialValues = {
@@ -30,12 +30,6 @@ const From = () => {
     })
   }
 
-  useEffect(() => {
-    console.log(formErrors)
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(formValues)
-    }
-  }, [formErrors])
   const validate = (values) => {
     const errors = {}
     const regex = /^[0-9]{10}$/g
