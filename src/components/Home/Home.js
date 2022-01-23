@@ -18,7 +18,7 @@ const Home = () => {
       dispatch(fetchProduct())
     }
     setDatas(productStore)
-  }, [productStore])
+  }, [productStore, dispatch, datas.length])
 
   const handleClick = (product) => {
     dispatch(addToCart(product))
